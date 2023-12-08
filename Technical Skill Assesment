@@ -1,1 +1,140 @@
-Test case 1
+(1.) Test case 1 Get User from page 3
+Base URL: https://api/users?page=3
+Endpoint : /users
+
+Test Steps:
+
+1. Send a GET Request to Retrieve Users from Page 3:
+   Method: GET
+   URL: https://api/users?page=3
+2. Verify the Response:
+   Check that the response status code 
+
+expected result : response code 400
+there will be not shown the result because the link contain only 2 pages
+
+(2.) Test case 2 Get Single user with ID 10
+Base URL : https://api/users/10
+Endpoint : /users
+
+Test Steps :
+
+1. Send a GET request from page 2
+  Method : GET
+  url : https://api/users/10
+2. Verify the response :
+   Check that the response status code is 200 (OK) indicating a successful request.
+   Verify that the response body contains a data from user with ID = 10
+   Ensure that the response structure matches the expected format.
+
+Expected Result : response code 200
+will get result : {
+            "id": 10,
+            "email": "byron.fields@reqres.in",
+            "first_name": "Byron",
+            "last_name": "Fields",
+            "avatar": "https://reqres.in/img/faces/10-image.jpg"
+        },
+
+(3.) Test case 3 Register Successful
+Base URL : https://api/register
+Endpoint : /register
+
+Test Steps :
+
+1. send a POST request 
+   Method : POST
+   URL : https ://api/register
+2. put ID and password for user 
+   {
+    "email": "eve.holt@reqres.in",
+    "password": "pistol"
+   }
+Expected Result : Response code 200
+will get result :
+{
+    "id": 4,
+    "token": "QpwL5tke4Pnpja7X4"
+}
+
+(4.) TEst case 4 Register failed
+Base URL : https://api/register
+Endpoint : /register
+
+skenario 1
+Test Steps :
+
+1. send a POST request 
+   Method : POST
+   URL : https ://api/register
+2. put only email/ID for user
+ {
+    "email": "sydney@fife"
+}
+Expected Result : Response code 400
+{
+    "error": "Missing password"
+}
+
+skenario 2
+Test Steps :
+
+1. send a POST request 
+   Method : POST
+   URL : https ://api/register
+2. put only password for user
+{
+    "password": "pistol"
+   }
+Expected Result : Response code 400
+{
+    "error": "Missing Email"
+}
+
+skenario 3
+Test step :
+1. send a POST request 
+   Method : POST
+   URL : https ://api/register
+2. make empty for email and password
+{
+    "email": "",
+    "password": ""
+   }
+Expected Result : Response code 400
+
+skenario 4
+Test step :
+1. send a POST request 
+   Method : POST
+   URL : https ://api/register
+2. make empty for email
+{
+    "email": "",
+    "password": "pistol"
+   }
+Expected Result : Response code 400
+
+skenario 5
+Test step :
+1. send a POST request 
+   Method : POST
+   URL : https ://api/register
+2. make empty for password
+{
+    "email": "sydney@fife",
+    "password": ""
+   }
+Expected Result : Response code 400
+
+skenario 6
+Test step :
+1. send a POST request 
+   Method : POST
+   URL : https ://api/register
+2. put  email that already used on registered user
+{
+    "email": "sydney@fife",
+    "password": "pistol123"
+   }
+Expected Result : Response code 400
